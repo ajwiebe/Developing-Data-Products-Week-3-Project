@@ -1,0 +1,17 @@
+---
+title: "Plotly Slideshow"
+output: ioslides_presentation
+date: 07/23/20
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+## Miles per Gallon by Weight and Horsepower 
+``` {r, warning = F, message = F}
+library(plotly)
+data("mtcars")
+plt <- plot_ly(data = mtcars, x = ~wt, y = ~mpg, z = ~hp, marker = list(color = ~cyl), mode = "markers")
+plt <- plt %>% add_markers() %>% layout(scene = list(xaxis = list(title = "Weight by Thousands of Pounds"), yaxis = list(title = "Miles Per Gallon"), zaxis = list(title = "Gross horsepower")))
+plt
+```
